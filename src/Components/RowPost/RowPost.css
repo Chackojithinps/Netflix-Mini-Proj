@@ -13,7 +13,31 @@
 .posterImg{
     max-height: 250px;
     margin-right: 10px;
+    cursor: pointer;
 }
 .posters::-webkit-scrollbar{
     display: none;
+}
+.smallPoster{
+    max-height: 150px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.posterImg:hover{
+    transform:scale(1.1);
+}
+.smallPoster:hover{
+    transform: scale(1.1);
+}
+.closeButton{
+    width: 4rem;
+    /* height: 2rem; */
+    float: right;
+    background-color:yellow;
+    /* border-radius: 10px; */
+    border: none;
+    outline: none;
+    font-weight: 800;
+    color: red;
+    cursor: pointer;
 }
