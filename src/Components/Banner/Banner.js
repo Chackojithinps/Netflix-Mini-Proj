@@ -1,15 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Banner.css'
+import {API_KEY,imageUrl} from '../../constants/Constants'
+import axios from '../../axios'
 function Banner() {
+  const [Movie,setMovie] =useState()
+  const [count,setCount] =useState(0)
+  useEffect(()=>{
+     axios.get(`trending/all/week?api_key=${API_KEY}&language=en-US`).then((res)=>{
+      // console.log(res.data.results[0])
+      
+      setMovie(res.data.results.sort(function (a, b) { return 0.5 - Math.random() })[0])
+
+     })
+  },[count])
+  
   return (
-    <div className='banner'>
+    <div
+     style={{backgroundImage:`url(${Movie?imageUrl+Movie.backdrop_path:null})`}}
+     className='banner'>
         <div className='content'>
-            <h1 className='banner_buttons'>Movie Name</h1>
+            <h1 className='banner_buttons'>{Movie?Movie.title:null}</h1>
             <div className='banner_buttons'>
-                <button className='button'>Play</button>
+                <button className='button' onClick={()=>setCount(count+1)}>Play</button>
                 <button className='button'>My list</button>
             </div>
-            <h1 className='description'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has</h1>
+            <h1 className='description'>{Movie?Movie.overview:null}</h1>
+            
         </div>
         <div className="fade_bottom"></div>
     </div>
