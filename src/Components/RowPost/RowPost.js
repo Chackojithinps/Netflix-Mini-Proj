@@ -23,7 +23,7 @@ function RowPost(props) {
           console.log("No data Availabe")
         }
       })
-  }
+   }
   const opts = {
     height: '390',
     width: '100%',
