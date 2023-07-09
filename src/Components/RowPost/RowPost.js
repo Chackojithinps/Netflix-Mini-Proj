@@ -20,7 +20,7 @@ function RowPost(props) {
         if(res.data.results.length!=0){
           setUrlId(res.data.results[0])
         }else{
-          console.log("No data Availabe")
+          console.log("No data Availabe" )
         }
       })
    }
